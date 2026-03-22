@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tilecal-ai-reconstruction"
+version = "0.1.0"
+description = "AI-accelerated TileCal signal reconstruction from ROOT data to FPGA-oriented deployment"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "GSoC Candidate"}]
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "torch>=2.2",
+  "scikit-learn>=1.4",
+  "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+data = ["uproot>=5.2", "awkward>=2.6"]
+track = ["mlflow>=2.10"]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "black>=24.3",
+  "ruff>=0.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+
+target-version = "py310"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
