@@ -1,0 +1,58 @@
+# repo-text
+
+Questa repository contiene **esclusivamente** questo file, come richiesto.
+
+## Blueprint GSoC TileCal AI Reconstruction (versione testo unica)
+
+### Obiettivo
+Costruire una base tecnica impeccabile per dimostrare ai mentor un piano reale e credibile:
+
+1. Pipeline dati modulare (ROOT -> tensori PyTorch)
+2. Baseline OF2
+3. Modelli compatti (MLP/CNN1D/GRU)
+4. Quantization-Aware Training (INT8/INT6/INT4)
+5. Conversione hls4ml e benchmark FPGA
+6. Documentazione e riproducibilità completa
+
+### Architettura proposta
+Raw ADC samples -> preprocessing -> OF2 + ML -> QAT -> hls4ml -> metriche FPGA
+
+### Preprocessing
+- Pedestal subtraction
+- Normalizzazione per stabilità numerica
+- Augmentation con rumore, pile-up sintetico e phase shift
+
+### Modelli
+- MLP 3-layer (baseline AI)
+- 1D-CNN compatta (candidata principale)
+- GRU troncata (baseline accuratezza vs latenza)
+
+### Loss multi-task
+- MSE per ampiezza
+- Huber/penalità pesata per timing
+
+### Hardware-aware path
+- Studio PTQ vs QAT
+- Riduzione progressiva bit-width
+- Mapping fixed-point stile `ap_fixed<W, I>`
+- Trade-off fisica/latency/risorse su FPGA
+
+### KPI finali
+- Risoluzione fisica vs pile-up
+- Latenza per canale (target << 1 us, ideale < 100 ns)
+- Utilizzo DSP/LUT/FF/BRAM
+
+### Timeline (350 ore)
+- Fase 0: bonding, setup ambiente, immersione dominio
+- Fase 1: pipeline dati + baseline OF2
+- Fase 2: training modelli FP32 + tuning
+- Fase 3: QAT + hls4ml + sintesi
+- Fase 4: hardening, test, report finale
+
+### Testing e CI/CD
+- Unit test su trasformazioni, loss, inferenza
+- CI con lint + test + smoke training
+- Tracking esperimenti con hash commit e artefatti
+
+### Risultato
+Questa è la versione **testuale unica** del lavoro, inserita nel main della repository con nome `repo-text`, come richiesto.
